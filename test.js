@@ -1,14 +1,27 @@
 #!/usr/bin/node
 
-const SCENE = require('./scene.js');
-const XX = 8;
-
-setInterval(onTick, 500);
-
 var
+	SCENE = require('./scene.js'),
+	KEYBOARD = require('./kb.js'),
+	XX = 8,
 	scene = new SCENE(),
 	currentIndex = 0
 ;
+
+setInterval(onTick, 500);
+KEYBOARD.setIntercative(true);
+KEYBOARD.setCharCallback(
+	function(a_str, a_key){
+		if (
+			(a_key.ctrl && a_key.name === 'c')
+			|| a_key.name === 'q' // comment this on release
+		){
+			process.exit();
+		}
+	}
+);
+KEYBOARD.setLineCallback(
+);
 
 function onTick(){
 	console.log('-- onTick --');
