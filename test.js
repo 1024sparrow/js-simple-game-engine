@@ -6,7 +6,7 @@ const XX = 8;
 setInterval(onTick, 500);
 
 var
-	scene = new SCENE(XX, 1),
+	scene = new SCENE(),
 	currentIndex = 0
 ;
 
@@ -31,6 +31,6 @@ function onTick(){
 		}
 	}
 
-	scene.setState(sceneContent);
+	scene.setState(sceneContent, '', `Current index: ${currentIndex}`);
 	currentIndex = (++currentIndex) % XX;
 };
